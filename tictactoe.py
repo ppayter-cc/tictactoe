@@ -53,6 +53,6 @@ while True:
     #form: y, x, str or ch	Move to position y,x within the window, and display str or ch
 
 curses.nocbreak()
-stdscr.keypad(False)
+screen.keypad(False)
 curses.echo()
 curses.endwin()
