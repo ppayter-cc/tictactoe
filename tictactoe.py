@@ -4,7 +4,26 @@ import time
 from curses import KEY_RIGHT, KEY_LEFT, KEY_UP, KEY_DOWN
 from random import randint
 
-
+def getPlayerMove(c):
+    if c == ord('7'):
+        screen.addstr(int(dims[0]/6),int(dims[1]/6),"x")
+    elif c == ord('8'):
+        screen.addstr(int(dims[0]/6),int(dims[1]/2),"x")
+    elif c == ord('9'):
+        screen.addstr(int(dims[0]/6),int(dims[1]/6*5),"x")
+    elif c == ord('4'):
+        screen.addstr(int(dims[0]/6*3),int(dims[1]/6),"x")
+    elif c == ord('5'):
+        screen.addstr(int(dims[0]/6*3),int(dims[1]/2),"x")
+    elif c == ord('6'):
+        screen.addstr(int(dims[0]/6*3),int(dims[1]/6*5),"x")
+    elif c == ord('1'):
+        screen.addstr(int(dims[0]/6*5),int(dims[1]/6),"x")
+    elif c == ord('2'):
+        screen.addstr(int(dims[0]/6*5),int(dims[1]/2),"x")
+    elif c == ord('3'):
+        screen.addstr(int(dims[0]/6*5),int(dims[1]/6*5),"x")
+    return()
 
 screen = curses.initscr()
 #bo = curses.initscr()
@@ -27,28 +46,13 @@ curses.curs_set(0)
 
 # print ("Use the number keys to place the symbols or press 'q' to quit.")
 
+
 while True:
     c = screen.getch()
-    if c == ord('7'):
-        screen.addstr(int(dims[0]/6),int(dims[1]/6),"x")
-    elif c == ord('8'):
-        screen.addstr(int(dims[0]/6),int(dims[1]/2),"x")
-    elif c == ord('9'):
-        screen.addstr(int(dims[0]/6),int(dims[1]/6*5),"x")
-    elif c == ord('4'):
-        screen.addstr(int(dims[0]/6*3),int(dims[1]/6),"x")
-    elif c == ord('5'):
-        screen.addstr(int(dims[0]/6*3),int(dims[1]/2),"x")
-    elif c == ord('6'):
-        screen.addstr(int(dims[0]/6*3),int(dims[1]/6*5),"x")
-    elif c == ord('1'):
-        screen.addstr(int(dims[0]/6*5),int(dims[1]/6),"x")
-    elif c == ord('2'):
-        screen.addstr(int(dims[0]/6*5),int(dims[1]/2),"x")
-    elif c == ord('3'):
-        screen.addstr(int(dims[0]/6*5),int(dims[1]/6*5),"x")
-    elif c == ord('q'):
-        break  # Exit the while loop
+    if c != ord('q'):
+        getPlayerMove(c)
+    else:
+        break  # Exit the while loop:
 
 
 
