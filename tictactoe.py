@@ -3,27 +3,53 @@ import curses.textpad
 import time
 from curses import KEY_RIGHT, KEY_LEFT, KEY_UP, KEY_DOWN
 from random import randint
+z = 0
 
 def getPlayerMove(c):
-    if c == ord('7'):
-        screen.addstr(int(dims[0]/6),int(dims[1]/6),"x")
-    elif c == ord('8'):
-        screen.addstr(int(dims[0]/6),int(dims[1]/2),"x")
-    elif c == ord('9'):
-        screen.addstr(int(dims[0]/6),int(dims[1]/6*5),"x")
-    elif c == ord('4'):
-        screen.addstr(int(dims[0]/6*3),int(dims[1]/6),"x")
-    elif c == ord('5'):
-        screen.addstr(int(dims[0]/6*3),int(dims[1]/2),"x")
-    elif c == ord('6'):
-        screen.addstr(int(dims[0]/6*3),int(dims[1]/6*5),"x")
-    elif c == ord('1'):
-        screen.addstr(int(dims[0]/6*5),int(dims[1]/6),"x")
-    elif c == ord('2'):
-        screen.addstr(int(dims[0]/6*5),int(dims[1]/2),"x")
-    elif c == ord('3'):
-        screen.addstr(int(dims[0]/6*5),int(dims[1]/6*5),"x")
-    return()
+    global z
+    if z == 0:
+        if c == ord('7'):
+            screen.addstr(int(dims[0]/6),int(dims[1]/6),"X")
+        elif c == ord('8'):
+            screen.addstr(int(dims[0]/6),int(dims[1]/2),"X")
+        elif c == ord('9'):
+            screen.addstr(int(dims[0]/6),int(dims[1]/6*5),"X")
+        elif c == ord('4'):
+            screen.addstr(int(dims[0]/6*3),int(dims[1]/6),"X")
+        elif c == ord('5'):
+            screen.addstr(int(dims[0]/6*3),int(dims[1]/2),"X")
+        elif c == ord('6'):
+            screen.addstr(int(dims[0]/6*3),int(dims[1]/6*5),"X")
+        elif c == ord('1'):
+            screen.addstr(int(dims[0]/6*5),int(dims[1]/6),"X")
+        elif c == ord('2'):
+            screen.addstr(int(dims[0]/6*5),int(dims[1]/2),"X")
+        elif c == ord('3'):
+            screen.addstr(int(dims[0]/6*5),int(dims[1]/6*5),"X")
+        z += 1
+        return()
+
+    if z == 1:
+        if c == ord('7'):
+            screen.addstr(int(dims[0]/6),int(dims[1]/6),"O")
+        elif c == ord('8'):
+            screen.addstr(int(dims[0]/6),int(dims[1]/2),"O")
+        elif c == ord('9'):
+            screen.addstr(int(dims[0]/6),int(dims[1]/6*5),"O")
+        elif c == ord('4'):
+            screen.addstr(int(dims[0]/6*3),int(dims[1]/6),"O")
+        elif c == ord('5'):
+            screen.addstr(int(dims[0]/6*3),int(dims[1]/2),"O")
+        elif c == ord('6'):
+            screen.addstr(int(dims[0]/6*3),int(dims[1]/6*5),"O")
+        elif c == ord('1'):
+            screen.addstr(int(dims[0]/6*5),int(dims[1]/6),"O")
+        elif c == ord('2'):
+            screen.addstr(int(dims[0]/6*5),int(dims[1]/2),"O")
+        elif c == ord('3'):
+            screen.addstr(int(dims[0]/6*5),int(dims[1]/6*5),"O")
+        z -= 1
+        return()
 
 screen = curses.initscr()
 #bo = curses.initscr()
