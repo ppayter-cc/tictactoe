@@ -114,6 +114,16 @@ def winning():  # whether one of the players won, prints this text
     return()
 
 
+def playername():
+    name_1 = input("Enter name for player 'X': ")
+    name_2 = input("Enter name for player 'O': ")
+    return (name_1, name_2)
+
+
+print (playername())
+
+# the whole curses stuff can be in a function
+
 screen = curses.initscr()  # draws the board
 dims = screen.getmaxyx()
 screen = curses.newwin(int(dims[0]), int(dims[1]), 0, 0)
@@ -124,7 +134,8 @@ for i in range(0, int(dims[0])):
 for i in range(0, int(dims[1])):
     screen.addstr(int(dims[0]/3), i, '_')  # horizontal
     screen.addstr(int(dims[0]/3*2), i, '_')
-screen.addstr(0, 1, "TIC-TAC-TOE ------ Use number keys to place 'X' and 'O', press 'q' to quit.")
+    screen.addstr(0, 1, "TIC-TAC-TOE ------ Use number keys to place 'X' and 'O', press 'q' to quit or press 'r' to restart!")
+
 
 curses.noecho()
 curses.cbreak()
@@ -135,13 +146,24 @@ while True:
     c = screen.getch()
     if c == ord('q'):  # if 'q' pressed the game exits
         break  # Exit the while loop
+    elif c == ord('r'):
+        screen = curses.initscr()  # draws the board
+        dims = screen.getmaxyx()
+        screen = curses.newwin(int(dims[0]), int(dims[1]), 0, 0)
+        screen.box()
+        for i in range(0, int(dims[0])):
+            screen.addstr(i, int(dims[1]/3), '|')  # vertical
+            screen.addstr(i, int(dims[1]/3*2), '|')
+        for i in range(0, int(dims[1])):
+            screen.addstr(int(dims[0]/3), i, '_')  # horizontal
+            screen.addstr(int(dims[0]/3*2), i, '_')
+        screen.addstr(0, 1, "TIC-TAC-TOE ------ Use number keys to place 'X' and 'O', press 'q' to quit or press 'r' to restart!")
+        board = [' '] * 10
+
     elif winner1() or winner2():  # if one of the players won
         winning()
-    elif c == ord('q'):  # if 'q' pressed the game exits
-        break  # Exit the while loop
     elif c != ord('q'):  # if 'q' is not pressed the game continues
         getPlayerMove(c)
-
 
 curses.nocbreak()
 screen.keypad(False)
