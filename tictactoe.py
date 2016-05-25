@@ -6,15 +6,16 @@ board = [' '] * 10
 
 playernames = [input("Enter name for player 'X': "), input("Enter name for player 'O': ")]
 
+
 z = 0  # for the 'test' function
 
 
 def current_player():
     global z
     if z == 0:
-        return screen.addstr(2, 1, playernames[0] + " is next!" + " "*10)
+        return screen.addstr(2, 1, playernames[0] + " is next!" + " "*5)
     elif z == 1:
-        return screen.addstr(2, 1, playernames[1] + " is next!" + " "*10)
+        return screen.addstr(2, 1, playernames[1] + " is next!" + " "*5)
 
 
 def test(i):  # alternates between 'X' and 'O'
@@ -122,11 +123,6 @@ def winning():  # whether one of the players won, prints this text
     elif winner2():
         screen.addstr(int(dims[0]/2-2), int(dims[1]/2), playernames[1] + " won!")
     return()
-
-# def playername():
-#     name_1 = input("Enter name for player 'X': ")
-#     name_2 = input("Enter name for player 'O': ")
-#     return (name_1, name_2)
 
 
 screen = curses.initscr()  # draws the board
