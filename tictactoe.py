@@ -4,7 +4,17 @@ import curses.textpad
 
 board = [' '] * 10
 
+playernames = [input("Enter name for player 'X': "), input("Enter name for player 'O': ")]
+
 z = 0  # for the 'test' function
+
+
+def current_player():
+    global z
+    if z == 0:
+        return screen.addstr(2, 1, playernames[0] + " is next!" + " "*10)
+    elif z == 1:
+        return screen.addstr(2, 1, playernames[1] + " is next!" + " "*10)
 
 
 def test(i):  # alternates between 'X' and 'O'
@@ -12,7 +22,7 @@ def test(i):  # alternates between 'X' and 'O'
     if z == 0:
         z += 1
         s = 'X'
-        board[i] = s  # fills the list of moves with the players' corresponding symbols
+        board[i] = s  # fills the list of moves with the players' symbols
         return "X"
     else:
         s = "O"
@@ -35,94 +45,89 @@ def getPlayerMove(c):  # prints the players' symbols on the space associated wit
     if c == ord('7'):
         i = 7
         rewrite(i)
-        if write == True:
+        if write:
             screen.addstr(int(dims[0]/6), int(dims[1]/6), test(i))
     elif c == ord('8'):
         i = 8
         rewrite(i)
-        if write == True:
+        if write:
             screen.addstr(int(dims[0]/6), int(dims[1]/2), test(i))
     elif c == ord('9'):
         i = 9
         rewrite(i)
-        if write == True:
+        if write:
             screen.addstr(int(dims[0]/6), int(dims[1]/6*5), test(i))
     elif c == ord('4'):
         i = 4
         rewrite(i)
-        if write == True:
+        if write:
             screen.addstr(int(dims[0]/6*3), int(dims[1]/6), test(i))
     elif c == ord('5'):
         i = 5
         rewrite(i)
-        if write == True:
+        if write:
             screen.addstr(int(dims[0]/6*3), int(dims[1]/2), test(i))
     elif c == ord('6'):
         i = 6
         rewrite(i)
-        if write == True:
+        if write:
             screen.addstr(int(dims[0]/6*3), int(dims[1]/6*5), test(i))
     elif c == ord('1'):
         i = 1
         rewrite(i)
-        if write == True:
+        if write:
             screen.addstr(int(dims[0]/6*5), int(dims[1]/6), test(i))
     elif c == ord('2'):
         i = 2
         rewrite(i)
-        if write == True:
+        if write:
             screen.addstr(int(dims[0]/6*5), int(dims[1]/2), test(i))
     elif c == ord('3'):
         i = 3
         rewrite(i)
-        if write == True:
+        if write:
             screen.addstr(int(dims[0]/6*5), int(dims[1]/6*5), test(i))
     return()
 
 
 def winner1():  # returns true if player1 wins
-    player1 = "X"
+    ply1 = "X"
     global board
-    return ((board[7] == player1 and board[8] == player1 and board[9] == player1) or  # horizontal
-            (board[4] == player1 and board[5] == player1 and board[6] == player1) or  # horizontal
-            (board[1] == player1 and board[2] == player1 and board[3] == player1) or  # horizontal
-            (board[7] == player1 and board[4] == player1 and board[1] == player1) or  # vertical
-            (board[8] == player1 and board[5] == player1 and board[2] == player1) or  # vertical
-            (board[9] == player1 and board[6] == player1 and board[3] == player1) or  # vertical
-            (board[7] == player1 and board[5] == player1 and board[3] == player1) or  # diagonal
-            (board[9] == player1 and board[5] == player1 and board[1] == player1))  # diagonal
+    return ((board[7] == ply1 and board[8] == ply1 and board[9] == ply1) or  # horizontal
+            (board[4] == ply1 and board[5] == ply1 and board[6] == ply1) or  # horizontal
+            (board[1] == ply1 and board[2] == ply1 and board[3] == ply1) or  # horizontal
+            (board[7] == ply1 and board[4] == ply1 and board[1] == ply1) or  # vertical
+            (board[8] == ply1 and board[5] == ply1 and board[2] == ply1) or  # vertical
+            (board[9] == ply1 and board[6] == ply1 and board[3] == ply1) or  # vertical
+            (board[7] == ply1 and board[5] == ply1 and board[3] == ply1) or  # diagonal
+            (board[9] == ply1 and board[5] == ply1 and board[1] == ply1))  # diagonal
 
 
 def winner2():  # returns true if player2 wins
-    player2 = "O"
+    ply2 = "O"
     global board
-    return ((board[7] == player2 and board[8] == player2 and board[9] == player2) or  # horizontal
-            (board[4] == player2 and board[5] == player2 and board[6] == player2) or  # horizontal
-            (board[1] == player2 and board[2] == player2 and board[3] == player2) or  # horizontal
-            (board[7] == player2 and board[4] == player2 and board[1] == player2) or  # vertical
-            (board[8] == player2 and board[5] == player2 and board[2] == player2) or  # vertical
-            (board[9] == player2 and board[6] == player2 and board[3] == player2) or  # vertical
-            (board[7] == player2 and board[5] == player2 and board[3] == player2) or  # diagonal
-            (board[9] == player2 and board[5] == player2 and board[1] == player2))  # diagonal
+    return ((board[7] == ply2 and board[8] == ply2 and board[9] == ply2) or  # horizontal
+            (board[4] == ply2 and board[5] == ply2 and board[6] == ply2) or  # horizontal
+            (board[1] == ply2 and board[2] == ply2 and board[3] == ply2) or  # horizontal
+            (board[7] == ply2 and board[4] == ply2 and board[1] == ply2) or  # vertical
+            (board[8] == ply2 and board[5] == ply2 and board[2] == ply2) or  # vertical
+            (board[9] == ply2 and board[6] == ply2 and board[3] == ply2) or  # vertical
+            (board[7] == ply2 and board[5] == ply2 and board[3] == ply2) or  # diagonal
+            (board[9] == ply2 and board[5] == ply2 and board[1] == ply2))  # diagonal
 
 
 def winning():  # whether one of the players won, prints this text
     if winner1():
-        screen.addstr(int(dims[0]/2-2), int(dims[1]/2-7), "Player 'X' won!")
+        screen.addstr(int(dims[0]/2-2), int(dims[1]/2), playernames[0] + " won!")
     elif winner2():
-        screen.addstr(int(dims[0]/2-2), int(dims[1]/2-7), "Player 'O' won!")
+        screen.addstr(int(dims[0]/2-2), int(dims[1]/2), playernames[1] + " won!")
     return()
 
+# def playername():
+#     name_1 = input("Enter name for player 'X': ")
+#     name_2 = input("Enter name for player 'O': ")
+#     return (name_1, name_2)
 
-def playername():
-    name_1 = input("Enter name for player 'X': ")
-    name_2 = input("Enter name for player 'O': ")
-    return (name_1, name_2)
-
-
-print (playername())
-
-# the whole curses stuff can be in a function
 
 screen = curses.initscr()  # draws the board
 dims = screen.getmaxyx()
@@ -134,7 +139,7 @@ for i in range(0, int(dims[0])):
 for i in range(0, int(dims[1])):
     screen.addstr(int(dims[0]/3), i, '_')  # horizontal
     screen.addstr(int(dims[0]/3*2), i, '_')
-    screen.addstr(0, 1, "TIC-TAC-TOE ------ Use number keys to place 'X' and 'O', press 'q' to quit or press 'r' to restart!")
+screen.addstr(0, 1, "Use number keys to place 'X' and 'O', press 'q' to quit or press 'r' to restart!")
 
 
 curses.noecho()
@@ -143,7 +148,12 @@ screen.keypad(True)
 curses.curs_set(0)
 
 while True:
+    if winner1() or winner2():  # if one of the players won
+        winning()
+        board = ['-'] * 10  # fills the board list to prevent more moves
+
     c = screen.getch()
+
     if c == ord('q'):  # if 'q' pressed the game exits
         break  # Exit the while loop
     elif c == ord('r'):
@@ -157,13 +167,13 @@ while True:
         for i in range(0, int(dims[1])):
             screen.addstr(int(dims[0]/3), i, '_')  # horizontal
             screen.addstr(int(dims[0]/3*2), i, '_')
-        screen.addstr(0, 1, "TIC-TAC-TOE ------ Use number keys to place 'X' and 'O', press 'q' to quit or press 'r' to restart!")
+        screen.addstr(0, 1, "Use number keys to place 'X' and 'O', press 'q' to quit or press 'r' to restart!")
         board = [' '] * 10
-
-    elif winner1() or winner2():  # if one of the players won
-        winning()
+        z = 0
     elif c != ord('q'):  # if 'q' is not pressed the game continues
         getPlayerMove(c)
+        current_player()
+
 
 curses.nocbreak()
 screen.keypad(False)
