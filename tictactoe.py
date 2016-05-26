@@ -13,7 +13,7 @@ z = 0  # for the 'test' function
 def current_player():
     global z
     if z == 0:
-        return screen.addstr(5, 1, playernames[0] + " is next!" + " "*30)  # whitespaces to overwrite unneccessary characters if a name is longer than the other
+        return screen.addstr(5, 1, playernames[0] + " is next!" + " "*30)
     elif z == 1:
         return screen.addstr(5, 1, playernames[1] + " is next!" + " "*30)
 
@@ -119,9 +119,9 @@ def winner2():  # returns true if player2 wins
 
 def winning():  # whether one of the players won, prints this text
     if winner1():
-        screen.addstr(5, 1, playernames[0] + " won!" + " "*30)
+        screen.addstr(5, 1, "♛  " + playernames[0] + " won! ♛" + " "*30)
     elif winner2():
-        screen.addstr(5, 1, playernames[1] + " won!" + " "*30)
+        screen.addstr(5, 1, "♛  " + playernames[1] + " won! ♛" + " "*30)
     return()
 
 
@@ -136,7 +136,7 @@ for i in range(0, int(dims[1])):
     screen.addstr(int(dims[0]/4), i, '_')
     screen.addstr(int(dims[0]/2), i, '_')  # horizontal
     screen.addstr(int(dims[0]/4*3), i, '_')
-screen.addstr(1, 1, "TIC-TAC-TOE")
+screen.addstr(1, 1, "►► ► TIC-TAC-TOE ◄ ◄◄")
 screen.addstr(2, 1, "Use number keys to place 'X' and 'O'.")
 screen.addstr(3, 1, "Press 'q' to quit or press 'r' to restart.")
 screen.addstr(5, 1, playernames[0] + " is next!" + " "*30)
@@ -169,7 +169,7 @@ while True:
             screen.addstr(int(dims[0]/4), i, '_')
             screen.addstr(int(dims[0]/2), i, '_')  # horizontal
             screen.addstr(int(dims[0]/8*6), i, '_')
-        screen.addstr(1, 1, "TIC-TAC-TOE")
+        screen.addstr(1, 1, "►► ► TIC-TAC-TOE ◄ ◄◄")
         screen.addstr(2, 1, "Use number keys to place 'X' and 'O'.")
         screen.addstr(3, 1, "Press 'q' to quit or press 'r' to restart.")
         screen.addstr(5, 1, playernames[0] + " is next!" + " "*30)
