@@ -1,2 +1,2 @@
 # tictactoe
-a simple tic-tac-toe script
+a simple multiplayer tic-tac-toe game 
